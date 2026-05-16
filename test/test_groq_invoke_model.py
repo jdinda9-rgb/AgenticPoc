@@ -1,5 +1,5 @@
 import os
-import httpx
+#import httpx
 from groq import Groq
 from dotenv import load_dotenv
 
@@ -18,8 +18,8 @@ def build_client() -> Groq:
         raise ValueError("Set GROQ_API_KEY in .env or environment variables.")
 
     ssl_verify = os.getenv("GROQ_SSL_VERIFY", "true").strip().lower() not in {"0", "false", "no"}
-    http_client = httpx.Client(verify=ssl_verify, timeout=30.0)
-    return Groq(api_key=api_key, http_client=http_client)
+    #http_client = httpx.Client(verify=ssl_verify, timeout=30.0)
+    return Groq(api_key=api_key, http_client=None)
 
 
 client = build_client()
@@ -41,7 +41,7 @@ def invoke_model(prompt: str) -> str:
 
 # --- Run ---
 question = """
-What is LLM?
+What is AgenticAI?
 """
 
 answer = invoke_model(question)
