@@ -3,9 +3,9 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 
-
+#"llama-3.1-8b-instant"
 # 1. Define model + behavior
-MODEL_NAME = "llama-3.1-8b-instant"
+MODEL_NAME =  "meta-llama/llama-4-scout-17b-16e-instruct"
 SYSTEM_PROMPT = "Answer concisely"
 # groq/compound llama-3.1-8b-instant
 

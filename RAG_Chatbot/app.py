@@ -4,7 +4,7 @@ from groq import Groq
 from dotenv import load_dotenv
 
 # --- Config ---
-MODEL_NAME = "llama-3.1-8b-instant"
+MODEL_NAME = "meta-llama/llama-4-scout-17b-16e-instruct"
 SYSTEM_PROMPT = "Answer concisely"
 
 # --- Client ---
