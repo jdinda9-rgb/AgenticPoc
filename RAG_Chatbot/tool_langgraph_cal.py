@@ -14,7 +14,8 @@ from typing_extensions import Annotated, TypedDict
 MODEL_NAME = "meta-llama/llama-4-scout-17b-16e-instruct"
 SYSTEM_PROMPT = (
     "You are a helpful assistant tasked with performing arithmetic on a set of inputs. "
-    "Use the provided tools for arithmetic whenever needed."
+    "Use the provided tools for arithmetic whenever needed. "
+    "When calling tools, return numeric arguments as raw numbers, not quoted strings."
 )
 
 
@@ -35,38 +36,40 @@ def build_model() -> ChatGroq:
 
 
 @tool
-def multiply(a: int, b: int) -> int:
+def multiply(a: str, b: str) -> int:
     """Multiply `a` and `b`.
 
     Args:
-        a: First int
-        b: Second int
+        a: First number
+        b: Second number
     """
-    return a * b
+    return int(a) * int(b)
 
 
 @tool
-def add(a: int, b: int) -> int:
+def add(a: str, b: str) -> int:
     """Adds `a` and `b`.
 
     Args:
-        a: First int
-        b: Second int
+        a: First number
+        b: Second number
     """
-    return a + b
+    return int(a) + int(b)
 
 
 @tool
-def divide(a: int, b: int) -> float:
+def divide(a: str, b: str) -> float:
     """Divide `a` and `b`.
 
     Args:
-        a: First int
-        b: Second int
+        a: First number
+        b: Second number
     """
-    if b == 0:
+    a_val = float(a)
+    b_val = float(b)
+    if b_val == 0:
         raise ValueError("Cannot divide by zero.")
-    return a / b
+    return a_val / b_val
 
 
 # Register tools both as a list for binding and as a lookup map for execution.
@@ -148,7 +151,7 @@ def print_run_summary(result: dict) -> None:
 
 if __name__ == "__main__":
     # Simple learning-lab example input.
-    sample_question = "Add 3 and 4."
+    sample_question = "Benfits of chia seeds"
     print(f"Question: {sample_question}")
     result = run_agent(sample_question)
     print_run_summary(result)
