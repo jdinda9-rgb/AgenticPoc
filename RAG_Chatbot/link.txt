@@ -1,0 +1,7 @@
+Notebook link: https://colab.research.google.com/drive/1yHPdUyJGM68e1u0w9eEIi0n_iTIeo-Dl#scrollTo=ij8xeucvKgoa 
+
+Dataset link: https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets?resource=download 
+
+AnalyticsVidhya -
+
+https://courses.analyticsvidhya.com/courses/take/building-database-agent/downloads/69219845-course-handouts
